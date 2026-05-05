@@ -172,10 +172,10 @@ window.TEMPLATES_CONFIG = [
   {
     id: 'event-profesional',
     name: 'Event Profesional',
-    kategori: 'acara',
-    kategoriLabel: 'Acara Umum',
-    subtitle: 'Undangan Acara',
-    ornament: '◈',
+     kategori: 'pernikahan',
+    kategoriLabel: 'Pernikahan',
+    subtitle: 'Undangan Pernikahan',
+    ornament: '❀',
     previewTitle: 'Annual Gala Night\n2025',
     previewDate: 'Jumat, 12 Desember 2025',
     defaultTheme: 'gold',
@@ -188,6 +188,29 @@ window.TEMPLATES_CONFIG = [
       { key: 'sage',    label: 'Nature Green',   color: '#5A8A6A' },
     ]
   },
+
+
+  // ── TEMPLATE 9: Full Photography ──
+  {
+    id: 'full-photography',
+    name: 'Full Photography',
+    kategori: 'acara',
+    kategoriLabel: 'Acara Umum',
+    subtitle: 'Undangan Acara',
+    ornament: '◈',
+   previewTitle: 'Dimas & Nadia',
+    previewDate: 'Jumat, 10 Oktober 2025',
+    defaultTheme: 'sage',
+    badge: null,
+    demoFile: 'undangan/full-photography.html',
+    price: 'Rp 125.000',
+    themes: [
+      { key: 'gold',    label: 'Black Gold',     color: '#C9A84C' },
+      { key: 'slate',   label: 'Corporate Blue', color: '#4A6FA3' },
+      { key: 'sage',    label: 'Nature Green',   color: '#5A8A6A' },
+    ]
+  },
+
 
   // ══════════════════════════════════════════════
   // TAMBAHKAN TEMPLATE BARU DI BAWAH INI
