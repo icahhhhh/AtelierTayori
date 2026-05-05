@@ -272,15 +272,16 @@
       overflow: hidden;
     }
     .fp-bg {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 0;
     }
     .fp-bg img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }
     .fp-overlay {
       position: absolute; inset: 0;
       background: var(--overlay2, rgba(0,0,0,0.6));
     }
+    .fp-section { position: relative; }
     .fp-content {
       position: relative; z-index: 10;
       width: 100%; padding: 3rem 1.6rem;
@@ -720,12 +721,12 @@
 </div>
 
 <!-- ══════════ SECTION 1: HERO TYPING ══════════ -->
-<section class="fp-section" style="min-height:100dvh; background:#000;">
-  <div class="fp-bg">
-    <img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=800&q=80" alt="Hero">
-    <div class="fp-overlay fp-overlay-1"></div>
+<section class="fp-section" style="min-height:100dvh; background:#000; position:relative;">
+  <div class="fp-bg" style="position:absolute; inset:0; z-index:0;">
+    <img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=800&q=80" alt="Hero" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.7) 100%);"></div>
   </div>
-  <div class="hero-typing">
+  <div class="hero-typing" style="position:absolute;bottom:160px;left:0;right:0;padding:0 1.8rem;z-index:10;">
     <div id="typing-text"></div>
   </div>
 </section>
@@ -777,38 +778,38 @@
 </section>
 
 <!-- ══════════ SECTION 4: GALERI ══════════ -->
-<section class="fp-section gallery-section" style="padding: 3rem 1.4rem;">
-  <div class="fp-bg">
-    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Gallery BG">
-    <div class="fp-overlay" style="background:var(--overlay2)"></div>
+<section style="position:relative; min-height:100dvh; background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+  <div style="position:absolute; inset:0; z-index:0;">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Gallery BG" style="width:100%; height:100%; object-fit:cover; opacity:0.35;">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.65);"></div>
   </div>
-  <div class="fp-content" data-aos="fade-up" style="padding:3rem 1rem;">
-    <div class="gallery-label">✦ Momen Kami</div>
-    <div class="gallery-title">Portrait of Us</div>
-    <div class="swiper swiper-main">
+  <div style="position:relative; z-index:10; width:100%; padding:2.5rem 1.2rem;" data-aos="fade-up">
+    <div style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--tag-color,#C9A84C); text-align:center; margin-bottom:0.4rem;">✦ Momen Kami</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; color:white; text-align:center; margin-bottom:1.2rem;">Portrait of Us</div>
+    <div class="swiper swiper-main" style="width:100%; height:62vw; max-height:320px; border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1524824267900-2b58b8b3df85?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1524824267900-2b58b8b3df85?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper swiper-thumbs" style="margin-top:10px;">
+    <div class="swiper swiper-thumbs" style="margin-top:10px; height:68px;">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1524824267900-2b58b8b3df85?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200&q=60"></div>
-        <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200&q=60"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1537907510278-4a3e2b69e706?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1524824267900-2b58b8b3df85?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="swiper-slide" style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200&q=60" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
       </div>
     </div>
   </div>
@@ -1155,7 +1156,10 @@
 
   function renderWishes() {
     const box = document.getElementById('wishList');
-    if (!wishes.length) { box.innerHTML = ''; return; }
+    if (!wishes.length) {
+      box.innerHTML = '<p style="text-align:center; font-size:0.75rem; opacity:0.45; font-style:italic; padding:1rem 0;">Jadilah yang pertama mengirim doa ✨</p>';
+      return;
+    }
     box.innerHTML = wishes.map(w => `
       <div class="wish-item">
         <div class="wish-item-name">${w.name}</div>
