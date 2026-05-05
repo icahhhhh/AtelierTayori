@@ -3,239 +3,304 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Undangan Ulang Tahun — Birthday Celebration</title>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <title>Undangan Akad Nikah — Islami</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
     :root {
-      --bg: #FFF0F3; --bg2: #FFD6DF;
-      --accent: #E8336A; --accent2: #FF6B9D;
-      --dark: #2D0A16; --soft: #8B3252; --border: rgba(232,51,106,.2);
-      --confetti1: #E8336A; --confetti2: #FFD700; --confetti3: #7B2FBE;
+      --bg: #F8F5EE; --bg2: #EEE8D8;
+      --accent: #8B6914; --accent2: #C9A84C;
+      --dark: #2A2010; --soft: #6A5030; --border: rgba(139,105,20,.2);
+      --green: #2D5A3A;
     }
-    body[data-tema="slate"] {
-      --bg: #EEF1F7; --bg2: #D3DAEA;
-      --accent: #2D4FA3; --accent2: #6690E0;
-      --dark: #0A0F1A; --soft: #3A4F7A; --border: rgba(45,79,163,.2);
-      --confetti1: #2D4FA3; --confetti2: #FFD700; --confetti3: #E8336A;
+    body[data-tema="sage"] {
+      --bg: #EFF5F1; --bg2: #D4E6DA;
+      --accent: #2D5A3A; --accent2: #5A8A6A;
+      --dark: #0A1C12; --soft: #3A5A44; --border: rgba(45,90,58,.2);
+      --green: #1A3A24;
     }
     body[data-tema="gold"] {
-      --bg: #0F0D08; --bg2: #1C1810;
+      --bg: #0F0D08; --bg2: #1A1610;
       --accent: #C9A84C; --accent2: #E8D5A3;
       --dark: #E8D5A3; --soft: rgba(232,213,163,.6); --border: rgba(201,168,76,.2);
-      --confetti1: #C9A84C; --confetti2: #E8336A; --confetti3: #7B2FBE;
+      --green: #C9A84C;
     }
-    body[data-tema="terra"] {
-      --bg: #F7EDE8; --bg2: #E8CCBC;
-      --accent: #D4631E; --accent2: #F0956A;
-      --dark: #2A0C04; --soft: #7A3A18; --border: rgba(212,99,30,.2);
-      --confetti1: #D4631E; --confetti2: #FFD700; --confetti3: #2D4FA3;
+    body[data-tema="slate"] {
+      --bg: #F0F2F8; --bg2: #D8DFF0;
+      --accent: #2D4A8B; --accent2: #6A8ABB;
+      --dark: #0A1228; --soft: #3A4A6A; --border: rgba(45,74,139,.2);
+      --green: #1A2D5A;
     }
 
     body {
-      background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
-      color: var(--dark); font-family: 'Nunito', sans-serif; font-weight: 300;
+      background: var(--bg);
+      color: var(--dark); font-family: 'DM Sans',sans-serif; font-weight: 300;
       min-height: 100vh;
     }
 
-    /* ── CONFETTI ── */
-    .confetti-piece {
-      position: fixed; width: 8px; height: 8px;
-      animation: confetti-fall linear infinite; pointer-events: none; z-index: 0;
-    }
-    @keyframes confetti-fall {
-      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    /* ── GEOMETRIC PATTERNS ── */
+    .pattern-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .04;
+      background-image:
+        repeating-linear-gradient(45deg, var(--accent) 0, var(--accent) 1px, transparent 0, transparent 50%),
+        repeating-linear-gradient(-45deg, var(--accent) 0, var(--accent) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
     }
 
     /* ── COVER ── */
     .cover {
-      min-height: 100vh; display: flex; flex-direction: column;
+      min-height: 100vh; position: relative; z-index: 1;
+      display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center; padding: 3rem 2rem; position: relative; z-index: 1;
+      text-align: center; padding: 3rem 2rem;
     }
-    .cover-emoji { font-size: 4rem; margin-bottom: 1rem; animation: bounce 1.5s infinite; }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+    /* border frame */
+    .frame {
+      position: absolute; inset: 1.5rem;
+      border: 1px solid var(--border); pointer-events: none;
     }
-    .cover-label {
-      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--soft); margin-bottom: .8rem;
+    .frame::before {
+      content: ''; position: absolute; inset: 6px;
+      border: 1px solid var(--border); opacity: .5;
     }
-    .cover-sub {
-      font-size: 1rem; color: var(--soft); margin-bottom: 1.5rem;
+    /* corner diamonds */
+    .frame-corner {
+      position: absolute; width: 16px; height: 16px;
+      background: var(--accent2); transform: rotate(45deg);
     }
-    .cover-age {
-      font-family: 'Abril Fatface', serif;
-      font-size: clamp(5rem, 20vw, 9rem); color: var(--accent);
-      line-height: 1; margin-bottom: .5rem;
-      text-shadow: 4px 4px 0 var(--accent2);
-    }
-    .cover-name {
-      font-family: 'Abril Fatface', serif;
-      font-size: clamp(1.8rem, 6vw, 3rem); color: var(--dark);
-      margin-bottom: 2rem; letter-spacing: .02em;
-    }
-    .cover-date {
-      font-size: .8rem; letter-spacing: .1em;
-      color: var(--soft); margin-bottom: 2.5rem;
-    }
-    .btn-open {
-      background: var(--accent); color: white; border: none;
-      padding: 1rem 2.8rem; cursor: pointer;
-      font-family: 'Nunito',sans-serif; font-size: .9rem;
-      font-weight: 600; letter-spacing: .06em; border-radius: 2px;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 16px rgba(0,0,0,.15);
-    }
-    .btn-open:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .frame-corner.tl { top: -8px; left: -8px; }
+    .frame-corner.tr { top: -8px; right: -8px; }
+    .frame-corner.bl { bottom: -8px; left: -8px; }
+    .frame-corner.br { bottom: -8px; right: -8px; }
 
-    /* ── MAIN ── */
+    .arabic-text {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--accent);
+      margin-bottom: .4rem; direction: rtl; line-height: 1.5;
+    }
+    .arabic-trans {
+      font-size: .7rem; letter-spacing: .06em; color: var(--soft);
+      margin-bottom: 2rem;
+    }
+    .crescent { font-size: 3rem; color: var(--accent2); margin-bottom: 1.5rem; }
+    .cover-label {
+      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--soft); margin-bottom: 2rem;
+    }
+    .cover-couple {
+      font-family: 'Amiri', serif;
+      font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 400; color: var(--dark); line-height: 1.3;
+    }
+    .cover-couple em { font-style: italic; color: var(--accent); }
+    .cover-amp {
+      font-family: 'Amiri',serif; font-size: 1.8rem; color: var(--accent2);
+      display: block; margin: .3rem 0;
+    }
+    .cover-divider {
+      display: flex; align-items: center; gap: 1rem; margin: 1.8rem auto;
+      max-width: 240px; color: var(--accent);
+    }
+    .cover-divider::before, .cover-divider::after { content:''; flex:1; height:1px; background:var(--border); }
+    .cover-date { font-size: .8rem; letter-spacing: .1em; color: var(--soft); margin-bottom: 2.5rem; }
+    .btn-open {
+      border: 1px solid var(--accent); color: var(--accent); background: transparent;
+      padding: .9rem 2.6rem; cursor: pointer;
+      font-family: 'DM Sans',sans-serif; font-size: .78rem;
+      letter-spacing: .12em; text-transform: uppercase; transition: all .3s;
+    }
+    .btn-open:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── SECTIONS ── */
     .main-content { display: none; }
     .main-content.open { display: block; }
 
+    .sep { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
     .section {
       max-width: 640px; margin: 0 auto;
-      padding: 4rem 2rem; text-align: center; position: relative; z-index: 1;
+      padding: 4.5rem 2rem; text-align: center; position: relative; z-index: 1;
     }
-    .section-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .section-crescent { font-size: 1.8rem; color: var(--accent2); margin-bottom: .8rem; display: block; }
     .section-label {
-      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--soft); margin-bottom: 1rem;
+      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--soft); margin-bottom: 1.5rem;
     }
     .section-title {
-      font-family: 'Abril Fatface', serif;
-      font-size: clamp(2rem, 6vw, 3rem); color: var(--accent);
-      margin-bottom: 1rem; letter-spacing: .02em;
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(1.8rem,5vw,2.6rem); font-weight: 300; color: var(--dark); line-height: 1.3;
+      margin-bottom: 1rem;
     }
+    .section-title em { font-style: italic; color: var(--accent); }
     .section-text { font-size: .9rem; line-height: 1.9; color: var(--soft); }
-    .divider {
-      display: flex; align-items: center; gap: 1rem;
-      margin: 2rem auto; max-width: 200px; color: var(--accent);
+
+    /* couple */
+    .couple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2.5rem 0; }
+    .couple-card {
+      border: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; position: relative;
     }
-    .divider::before, .divider::after { content:''; flex:1; height:1px; background:var(--border); }
+    .couple-card::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:30px; height:2px; background: var(--accent2);
+    }
+    .couple-emoji { font-size: 2rem; margin-bottom: .8rem; display: block; }
+    .couple-name {
+      font-family: 'Source Serif 4',serif;
+      font-size: 1.2rem; color: var(--dark); margin-bottom: .5rem;
+    }
+    .couple-bin { font-size: .75rem; color: var(--accent); margin-bottom: .4rem; }
+    .couple-parent { font-size: .78rem; color: var(--soft); line-height: 1.6; }
 
     /* event */
     .event-box {
-      border: 2px solid var(--border); padding: 2.5rem;
-      position: relative; overflow: hidden;
-      background: rgba(255,255,255,.5);
+      border: 1px solid var(--border); padding: 2.5rem;
+      position: relative; overflow: hidden; margin-bottom: 1.5rem;
+      background: rgba(255,255,255,.4);
     }
-    .event-box::before {
-      content:'🎂'; position:absolute; top:-10px; right:-10px;
-      font-size: 4rem; opacity: .1;
+    .event-header {
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
     }
-    .event-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
     .event-date {
-      font-family: 'Abril Fatface', serif;
-      font-size: 1.8rem; color: var(--accent); margin-bottom: .5rem;
+      font-family: 'Source Serif 4',serif;
+      font-size: 1.6rem; color: var(--dark); margin-bottom: .5rem;
     }
-    .event-time { font-size: .85rem; color: var(--soft); margin-bottom: 1.2rem; }
-    .event-venue { font-weight: 600; font-size: 1rem; color: var(--dark); margin-bottom: .4rem; }
-    .event-addr { font-size: .82rem; color: var(--soft); line-height: 1.6; margin-bottom: 1.5rem; }
+    .event-time { font-size: .82rem; color: var(--soft); margin-bottom: 1.2rem; }
+    .event-venue { font-weight: 400; font-size: .95rem; color: var(--dark); margin-bottom: .4rem; }
+    .event-addr { font-size: .8rem; color: var(--soft); line-height: 1.6; margin-bottom: 1.5rem; }
     .btn-map {
-      display: inline-block; background: var(--accent); color: white;
-      padding: .6rem 1.8rem; font-size: .78rem; font-weight: 600;
-      letter-spacing: .06em; text-decoration: none; border-radius: 2px;
-      transition: opacity .2s;
+      border: 1px solid var(--accent); color: var(--accent);
+      padding: .5rem 1.5rem; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; transition: all .2s; display: inline-block;
     }
-    .btn-map:hover { opacity: .85; }
+    .btn-map:hover { background: var(--accent); color: var(--bg); }
 
     /* countdown */
-    .countdown { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0; }
-    .cd-item {
-      background: var(--accent); color: white;
-      width: 80px; padding: 1rem .5rem; text-align: center;
-      border-radius: 2px;
+    .countdown { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0; }
+    .cd-item { text-align: center; }
+    .cd-num {
+      font-family: 'Source Serif 4',serif;
+      font-size: 3rem; font-weight: 300; color: var(--accent); line-height: 1;
     }
-    .cd-num { font-family: 'Abril Fatface',serif; font-size: 2.2rem; line-height: 1; }
-    .cd-label { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+    .cd-label { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
 
     /* rsvp */
-    .rsvp-field {
-      width: 100%; border: 2px solid var(--border); background: rgba(255,255,255,.6);
-      padding: .9rem 1rem; color: var(--dark);
-      font-family: 'Nunito',sans-serif; font-size: .9rem;
-      outline: none; display: block; margin-bottom: 1rem;
-      transition: border-color .2s;
+    .field {
+      width: 100%; border: 0; border-bottom: 1px solid var(--border);
+      background: transparent; padding: .8rem 0; color: var(--dark);
+      font-family: 'DM Sans',sans-serif; font-size: .9rem;
+      display: block; margin-bottom: 1.5rem; outline: none; transition: border-color .2s;
     }
-    .rsvp-field:focus { border-color: var(--accent); }
-    .rsvp-field::placeholder { color: var(--soft); }
+    .field:focus { border-color: var(--accent); }
+    .field::placeholder { color: var(--soft); }
     .btn-rsvp {
-      width: 100%; background: var(--accent); color: white; border: none;
-      padding: 1rem; cursor: pointer;
-      font-family: 'Nunito',sans-serif; font-weight: 600;
-      font-size: .9rem; letter-spacing: .06em; transition: opacity .2s;
+      width: 100%; border: 1px solid var(--accent); color: var(--accent);
+      background: transparent; padding: .9rem; cursor: pointer;
+      font-family: 'DM Sans',sans-serif; font-size: .78rem;
+      letter-spacing: .12em; text-transform: uppercase; transition: all .3s;
     }
-    .btn-rsvp:hover { opacity: .85; }
+    .btn-rsvp:hover { background: var(--accent); color: var(--bg); }
 
     /* wishes */
-    .wish-item {
-      background: rgba(255,255,255,.6); border: 2px solid var(--border);
-      padding: 1rem 1.2rem; margin-bottom: .8rem; text-align: left;
-    }
-    .wish-name { font-weight: 600; font-size: .82rem; color: var(--accent); margin-bottom: .3rem; }
-    .wish-text { font-size: .85rem; color: var(--soft); line-height: 1.6; }
+    .wish { border: 1px solid var(--border); padding: 1.2rem 1.4rem; margin-bottom: 1rem; text-align: left; }
+    .wish-n { font-size: .75rem; color: var(--accent); margin-bottom: .4rem; letter-spacing: .06em; }
+    .wish-t { font-size: .85rem; color: var(--soft); line-height: 1.7; }
 
     .inv-footer {
-      padding: 4rem 2rem; text-align: center;
+      padding: 5rem 2rem; text-align: center; position: relative; z-index: 1;
       background: linear-gradient(0deg, var(--bg2) 0%, transparent 100%);
-      position: relative; z-index: 1;
     }
-    .footer-msg {
-      font-family: 'Abril Fatface',serif;
-      font-size: 1.4rem; color: var(--accent); margin-bottom: 1rem;
+    .footer-arabic {
+      font-family: 'Amiri',serif; font-size: 1.8rem; color: var(--accent2);
+      direction: rtl; margin-bottom: 1rem;
     }
-    .footer-sub { font-size: .85rem; color: var(--soft); }
+    .footer-text {
+      font-family: 'Source Serif 4',serif;
+      font-size: .95rem; font-style: italic; color: var(--soft); line-height: 1.9;
+    }
 
     .theme-bar {
-      position: fixed; bottom: 1rem; right: 1rem;
-      display: flex; gap: .4rem; z-index: 999;
-      background: white; padding: .5rem; box-shadow: 0 4px 20px rgba(0,0,0,.15);
+      position: fixed; bottom: 1rem; right: 1rem; z-index: 999;
+      display: flex; gap: .4rem;
+      background: white; padding: .5rem; box-shadow: 0 4px 20px rgba(0,0,0,.12);
     }
     .tdot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; transition: transform .2s; }
     .tdot:hover { transform: scale(1.2); }
   </style>
 </head>
-<body data-tema="sakura">
-
-<!-- CONFETTI (JS populated) -->
-<div id="confettiContainer"></div>
+<body data-tema="ivory">
+<div class="pattern-bg"></div>
 
 <div class="theme-bar">
-  <div class="tdot" style="background:#E8336A" onclick="setTema('sakura')" title="Pink"></div>
-  <div class="tdot" style="background:#2D4FA3" onclick="setTema('slate')" title="Blue"></div>
-  <div class="tdot" style="background:#C9A84C" onclick="setTema('gold')" title="Gold"></div>
-  <div class="tdot" style="background:#D4631E" onclick="setTema('terra')" title="Orange"></div>
+  <div class="tdot" style="background:#8B6914" onclick="setTema('ivory')" title="Gold Classic"></div>
+  <div class="tdot" style="background:#2D5A3A" onclick="setTema('sage')" title="Sage Green"></div>
+  <div class="tdot" style="background:#C9A84C" onclick="setTema('gold')" title="Dark Gold"></div>
+  <div class="tdot" style="background:#2D4A8B" onclick="setTema('slate')" title="Slate Blue"></div>
 </div>
 
 <!-- COVER -->
 <div class="cover" id="cover">
-  <div class="cover-emoji">🎂</div>
-  <div class="cover-label">Undangan Ulang Tahun</div>
-  <div class="cover-sub">Kamu diundang merayakan</div>
-  <div class="cover-age">17</div>
-  <div class="cover-name">Zahira Auliya</div>
-  <div class="cover-date">📅 Selasa, 25 November 2025 • 15.00 WIB</div>
-  <button class="btn-open" onclick="openInvitation()">🎉 Buka Undangan!</button>
+  <div class="frame">
+    <div class="frame-corner tl"></div>
+    <div class="frame-corner tr"></div>
+    <div class="frame-corner bl"></div>
+    <div class="frame-corner br"></div>
+  </div>
+  <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="arabic-trans">Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang</div>
+  <div class="crescent">☽</div>
+  <div class="cover-label">Walimatul 'Ursy — Mengundang Kehadiran</div>
+  <div class="cover-couple">
+    <em>Fajar</em>
+    <span class="cover-amp">&amp;</span>
+    <em>Rahma</em>
+  </div>
+  <div class="cover-divider">◆</div>
+  <div class="cover-date">Ahad · 3 Januari 2026 · Banjarmasin</div>
+  <button class="btn-open" onclick="openInvitation()">Buka Undangan</button>
 </div>
 
 <!-- MAIN -->
 <div class="main-content" id="mainContent">
+  <div class="sep"></div>
 
+  <!-- Ayat -->
   <div class="section">
-    <span class="section-emoji">✨</span>
-    <div class="section-label">Heyy!!</div>
-    <div class="section-title">Zahira Turns 17!</div>
-    <p class="section-text">
-      Dengan penuh kebahagiaan, aku mengundang kamu untuk ikut merayakan hari spesialku yang ke-17! Yuk dateng, pasti seru dan penuh kejutan! 🎊
-    </p>
+    <span class="section-crescent">☽</span>
+    <div class="arabic-text" style="font-size:1.4rem;margin-bottom:.5rem">وَمِنۡ ءَايَٰتِهِۦٓ أَنۡ خَلَقَ لَكُم مِّنۡ أَنفُسِكُمۡ أَزۡوَٰجٗا</div>
+    <div class="arabic-trans" style="line-height:1.8;margin-bottom:0">
+      "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."<br>
+      <strong style="color:var(--accent)">— QS. Ar-Rum: 21</strong>
+    </div>
   </div>
 
-  <div class="section" style="padding-top:0">
-    <span class="section-emoji">⏰</span>
+  <div class="sep"></div>
+
+  <!-- Couple -->
+  <div class="section">
+    <div class="section-label">Mempelai</div>
+    <h2 class="section-title">Kedua <em>Mempelai</em></h2>
+    <div class="couple-grid">
+      <div class="couple-card">
+        <span class="couple-emoji">🤵</span>
+        <div class="couple-name">Fajar Ramadhan</div>
+        <div class="couple-bin">Bin</div>
+        <div class="couple-parent">Bapak Syamsul Arifin<br>& Ibu Noor Aini</div>
+      </div>
+      <div class="couple-card">
+        <span class="couple-emoji">👰</span>
+        <div class="couple-name">Rahma Sari</div>
+        <div class="couple-bin">Binti</div>
+        <div class="couple-parent">Bapak Abdul Hakim<br>& Ibu Siti Rahmah</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- Countdown -->
+  <div class="section">
     <div class="section-label">Hitung Mundur</div>
     <div class="countdown" id="countdown">
       <div class="cd-item"><div class="cd-num" id="days">00</div><div class="cd-label">Hari</div></div>
@@ -245,55 +310,80 @@
     </div>
   </div>
 
+  <!-- Events -->
   <div class="section" style="padding-top:0">
-    <span class="section-emoji">📍</span>
-    <div class="section-label">Lokasi & Waktu</div>
+    <span class="section-crescent">◆</span>
+    <div class="section-label">Rangkaian Acara</div>
+    <h2 class="section-title">Waktu & <em>Lokasi</em></h2>
+
     <div class="event-box">
-      <span class="event-icon">🎈</span>
-      <div class="event-date">Selasa, 25 November 2025</div>
-      <div class="event-time">15.00 – 20.00 WIB (dresscode: pastel!)</div>
-      <div class="event-venue">Cafe Bintang Garden</div>
-      <div class="event-addr">Jl. Pangeran Antasari No. 45<br>Banjarmasin, Kalimantan Selatan</div>
-      <a href="https://maps.google.com" class="btn-map" target="_blank">📍 Lihat Lokasi</a>
+      <div class="event-header">☽ Akad Nikah</div>
+      <div class="event-date">Ahad, 3 Januari 2026</div>
+      <div class="event-time">08.30 — 10.00 WIB</div>
+      <div class="event-venue">Masjid Jami Banjarmasin</div>
+      <div class="event-addr">Jl. Antasan Kecil Timur, Banjarmasin Tengah<br>Kalimantan Selatan 70121</div>
+      <a href="https://maps.google.com" class="btn-map" target="_blank">Lihat Peta</a>
+    </div>
+
+    <div class="event-box">
+      <div class="event-header">◆ Walimatul 'Ursy</div>
+      <div class="event-date">Ahad, 3 Januari 2026</div>
+      <div class="event-time">11.00 — 14.00 WIB</div>
+      <div class="event-venue">Aula Gedung Dakwah Islamiyah</div>
+      <div class="event-addr">Jl. S. Parman No. 8, Banjarmasin Barat<br>Kalimantan Selatan</div>
+      <a href="https://maps.google.com" class="btn-map" target="_blank">Lihat Peta</a>
     </div>
   </div>
 
-  <div class="section" style="padding-top:0">
-    <span class="section-emoji">🙋‍♀️</span>
+  <div class="sep"></div>
+
+  <!-- RSVP -->
+  <div class="section">
+    <span class="section-crescent">✉</span>
     <div class="section-label">Konfirmasi Kehadiran</div>
-    <div class="section-title">RSVP Yuk!</div>
-    <p class="section-text" style="margin-bottom:2rem">Konfirmasi kehadiran kamu paling lambat 3 hari sebelum acara ya!</p>
+    <h2 class="section-title">R.S.V.P</h2>
+    <p class="section-text" style="margin-bottom:2.5rem">Mohon konfirmasi kehadiran paling lambat 5 hari sebelum acara.</p>
     <div style="max-width:380px;margin:0 auto">
-      <input class="rsvp-field" type="text" placeholder="Nama kamu siapa?" id="rsvpName"/>
-      <select class="rsvp-field" id="rsvpHadir">
-        <option value="">— Bisa dateng ga? —</option>
-        <option value="hadir">🙌 Bisa! Aku dateng!</option>
-        <option value="tidak">😢 Maaf ga bisa...</option>
+      <input class="field" type="text" placeholder="Nama lengkap" id="rsvpName"/>
+      <select class="field" id="rsvpHadir">
+        <option value="">— Konfirmasi —</option>
+        <option value="hadir">Insya Allah Hadir</option>
+        <option value="tidak">Mohon Maaf Berhalangan</option>
       </select>
-      <button class="btn-rsvp" onclick="submitRSVP()">🎉 Konfirmasi!</button>
-      <div id="rsvpMsg" style="margin-top:1rem;color:var(--accent);font-size:.85rem;text-align:center"></div>
+      <button class="btn-rsvp" onclick="submitRSVP()">Kirim Konfirmasi</button>
+      <div id="rsvpMsg" style="margin-top:1rem;color:var(--accent);font-size:.82rem;text-align:center"></div>
     </div>
   </div>
 
-  <div class="section" style="padding-top:0">
-    <span class="section-emoji">💌</span>
-    <div class="section-label">Ucapan & Doa</div>
-    <div class="section-title">Kirim Doa!</div>
-    <div style="max-height:300px;overflow-y:auto;margin-bottom:1.5rem" id="wishesList">
-      <div class="wish-item"><div class="wish-name">Mama & Papa 💕</div><div class="wish-text">Selamat ulang tahun sayang! Semoga selalu sehat, bahagia, dan jadi anak yang sholehah. Love you! 🥰</div></div>
-      <div class="wish-item"><div class="wish-name">Geng Cantik XI IPA 2 ✨</div><div class="wish-text">HAPPY BDAY ZAHIRA!! semoga panjang umur dan cepet dapet jodoh wkwkwk 😂🎊</div></div>
+  <div class="sep"></div>
+
+  <!-- Wishes -->
+  <div class="section">
+    <span class="section-crescent">☽</span>
+    <div class="section-label">Doa & Ucapan</div>
+    <h2 class="section-title">Kirim <em>Doa</em></h2>
+    <div style="max-height:280px;overflow-y:auto;margin-bottom:1.5rem" id="wishesList">
+      <div class="wish"><div class="wish-n">Ustadz Ridwan Hakim</div><div class="wish-t">Barakallahu lakuma wa baraka 'alaykuma wa jama'a baynakuma fi khoir. Semoga menjadi keluarga yang sakinah mawaddah warahmah.</div></div>
+      <div class="wish"><div class="wish-n">Keluarga Besar Al-Amin</div><div class="wish-t">Alhamdulillah, selamat ya! Semoga pernikahannya membawa keberkahan dunia dan akhirat. Aamiin ya Rabb.</div></div>
     </div>
     <div style="display:flex;gap:.8rem;max-width:400px;margin:0 auto">
-      <input class="rsvp-field" type="text" placeholder="Tulis doamu..." id="wishInput" style="margin:0;flex:1"/>
-      <button class="btn-rsvp" onclick="addWish()" style="width:auto;padding:.9rem 1.2rem">Kirim 💌</button>
+      <input class="field" type="text" placeholder="Tulis doamu..." id="wishInput" style="margin:0;flex:1"/>
+      <button class="btn-rsvp" onclick="addWish()" style="width:auto;padding:.8rem 1.2rem">Kirim</button>
     </div>
   </div>
 
+  <!-- Footer -->
   <div class="inv-footer">
-    <div class="footer-msg">See You There! 🎉🎈</div>
-    <p class="footer-sub">— Zahira Auliya —</p>
-    <p class="footer-sub" style="margin-top:.5rem">25 November 2025</p>
+    <div class="footer-arabic">وَبَارَكَ اللَّهُ لَكُمَا</div>
+    <div class="arabic-trans" style="margin-bottom:1.5rem">Wa baarakallahu lakuma — Semoga Allah memberkahi kalian berdua</div>
+    <p class="footer-text">
+      Merupakan kehormatan dan kebahagiaan bagi kami sekeluarga<br>
+      apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan<br>
+      doa restu kepada kedua mempelai.
+    </p>
+    <div style="margin-top:2rem;font-size:.7rem;letter-spacing:.12em;color:var(--soft)">FAJAR & RAHMA · 03.01.2026</div>
   </div>
+
 </div>
 
 <script>
@@ -301,41 +391,19 @@ const params = new URLSearchParams(location.search);
 if (params.get('tema')) document.body.setAttribute('data-tema', params.get('tema'));
 function setTema(t) { document.body.setAttribute('data-tema', t); }
 
-// Generate confetti
-function makeConfetti() {
-  const colors = ['#E8336A','#FFD700','#7B2FBE','#2D9CDB','#27AE60','#FF6B35'];
-  const container = document.getElementById('confettiContainer');
-  for (let i = 0; i < 30; i++) {
-    const el = document.createElement('div');
-    el.className = 'confetti-piece';
-    el.style.cssText = `
-      left: ${Math.random()*100}%;
-      background: ${colors[Math.floor(Math.random()*colors.length)]};
-      animation-duration: ${3+Math.random()*4}s;
-      animation-delay: ${Math.random()*4}s;
-      border-radius: ${Math.random()>.5?'50%':'0'};
-    `;
-    container.appendChild(el);
-  }
-}
-makeConfetti();
-
 function openInvitation() {
-  document.getElementById('cover').style.display = 'none';
+  document.getElementById('cover').style.display='none';
   document.getElementById('mainContent').classList.add('open');
   window.scrollTo(0,0);
-  startCountdown(new Date('2025-11-25T15:00:00'));
+  startCountdown(new Date('2026-01-03T08:30:00'));
 }
 
 function startCountdown(target) {
   function tick() {
     const diff = target - new Date();
-    if (diff <= 0) { document.getElementById('countdown').innerHTML = '<p style="font-size:1.5rem;color:var(--accent)">HARI INI! 🎉🎂</p>'; return; }
-    const d = Math.floor(diff/86400000), h = Math.floor(diff%86400000/3600000),
-          m = Math.floor(diff%3600000/60000), s = Math.floor(diff%60000/1000);
-    ['days','hours','mins','secs'].forEach((id,i) => {
-      document.getElementById(id).textContent = String([d,h,m,s][i]).padStart(2,'0');
-    });
+    if (diff <= 0) { document.getElementById('countdown').innerHTML='<p style="color:var(--accent);font-family:Source Serif 4,serif">Hari Ini! ☽</p>'; return; }
+    const v = [Math.floor(diff/86400000), Math.floor(diff%86400000/3600000), Math.floor(diff%3600000/60000), Math.floor(diff%60000/1000)];
+    ['days','hours','mins','secs'].forEach((id,i) => document.getElementById(id).textContent = String(v[i]).padStart(2,'0'));
   }
   tick(); setInterval(tick, 1000);
 }
@@ -343,22 +411,22 @@ function startCountdown(target) {
 function submitRSVP() {
   const name = document.getElementById('rsvpName').value.trim();
   const hadir = document.getElementById('rsvpHadir').value;
-  if (!name || !hadir) return;
+  if (!name||!hadir) return;
   document.getElementById('rsvpMsg').textContent = hadir==='hadir'
-    ? `🎉 Yeay ${name} bakal dateng! Siap-siap seru-seruan ya!`
-    : `😊 Oke ${name}, makasih udah ngasih tau! Kangen 🥺`;
-  document.getElementById('rsvpName').value = '';
-  document.getElementById('rsvpHadir').value = '';
+    ? `☽ Jazakallah khair ${name}! Kami menantikan kehadiranmu.`
+    : `☽ Jazakallah khair ${name}! Doa kalian sangat berarti bagi kami.`;
+  document.getElementById('rsvpName').value='';
+  document.getElementById('rsvpHadir').value='';
 }
 
 function addWish() {
   const input = document.getElementById('wishInput');
   if (!input.value.trim()) return;
   const d = document.createElement('div');
-  d.className = 'wish-item';
-  d.innerHTML = `<div class="wish-name">Tamu Undangan 💕</div><div class="wish-text">${input.value.trim()}</div>`;
+  d.className = 'wish';
+  d.innerHTML = `<div class="wish-n">Tamu Undangan</div><div class="wish-t">${input.value.trim()}</div>`;
   document.getElementById('wishesList').prepend(d);
-  input.value = '';
+  input.value='';
 }
 </script>
 </body>
