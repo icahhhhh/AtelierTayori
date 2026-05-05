@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undanganku — Undangan Digital Elegan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF7F2;
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --dark: #1A1610;
+      --mid: #4A4035;
+      --soft: #8C7B6B;
+      --rose: #D4826A;
+      --sage: #7A9E8A;
+      --slate: #6B7FA3;
+      --card-bg: #FFFDF9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 500;
+      color: var(--dark); letter-spacing: .04em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--mid);
+      font-size: .85rem; letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--dark); color: var(--cream);
+      border: none; padding: .6rem 1.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+      cursor: pointer; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 5% 4rem;
+      gap: 4rem;
+    }
+    .hero-text { }
+    
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      padding: .35rem .9rem; margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      margin-bottom: 1.8rem; color: var(--dark);
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc {
+      color: var(--soft); font-size: 1rem; line-height: 1.8;
+      max-width: 480px; margin-bottom: 2.8rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      background: var(--dark); color: var(--cream);
+      padding: .9rem 2.4rem; border: none; cursor: pointer;
+      font-family: 'DM Sans',sans-serif; font-size: .85rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      transition: background .2s; text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold); }
+    .btn-outline {
+      background: transparent; color: var(--dark);
+      padding: .9rem 2.4rem; border: 1px solid var(--dark); cursor: pointer;
+      font-family: 'DM Sans',sans-serif; font-size: .85rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      transition: all .2s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--dark); color: var(--cream); }
+
+    .hero-visual {
+      position: relative; height: 580px;
+    }
+    .hero-card {
+      position: absolute;
+      background: var(--card-bg);
+      box-shadow: 0 20px 60px rgba(26,22,16,.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .hero-card.c1 { width: 260px; height: 380px; top: 0; right: 80px; }
+    .hero-card.c2 { width: 220px; height: 320px; top: 100px; right: 280px; opacity: .85; }
+    .hero-card.c3 { width: 180px; height: 260px; top: 200px; right: 460px; opacity: .65; }
+    .hero-card-inner {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 1.5rem; text-align: center;
+    }
+    .card-ornament {
+      font-size: 2rem; margin-bottom: .8rem; color: var(--gold);
+    }
+    .card-couple {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 1.3rem; font-weight: 400; line-height: 1.4;
+      color: var(--dark); margin-bottom: .6rem;
+    }
+    .card-date {
+      font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft);
+    }
+    .card-preview-bar {
+      height: 6px; width: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--rose));
+    }
+
+    /* ── STATS ── */
+    .stats-bar {
+      background: var(--dark);
+      padding: 2.5rem 5%;
+      display: flex; justify-content: center; gap: 6rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 2.4rem; font-weight: 400; color: var(--gold);
+    }
+    .stat-label {
+      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-top: .3rem;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 5%; }
+    .section-tag {
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-desc {
+      color: var(--soft); font-size: .95rem; line-height: 1.8;
+      max-width: 520px; margin-bottom: 3rem;
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-row {
+      display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      border: 1px solid rgba(201,168,76,.3);
+      background: transparent; color: var(--mid);
+      padding: .45rem 1.2rem; cursor: pointer;
+      font-family: 'DM Sans',sans-serif;
+      font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+      transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--dark); color: var(--cream); border-color: var(--dark);
+    }
+
+    /* ── TEMPLATE GRID ── */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .template-card {
+      background: var(--card-bg);
+      box-shadow: 0 4px 24px rgba(26,22,16,.07);
+      cursor: pointer; transition: transform .3s, box-shadow .3s;
+      overflow: hidden; position: relative;
+    }
+    .template-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(26,22,16,.14);
+    }
+    .template-thumb {
+      height: 320px; position: relative; overflow: hidden;
+    }
+    .template-thumb-inner {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem; text-align: center;
+      transition: transform .4s;
+    }
+    .template-card:hover .template-thumb-inner { transform: scale(1.03); }
+
+    /* Theme Presets */
+    .theme-sakura { background: linear-gradient(160deg, #FFF0F3 0%, #FFD6DF 100%); }
+    .theme-sakura .t-title { color: #8B2E4A; }
+    .theme-sakura .t-ornament { color: #C45C7A; }
+
+    .theme-gold { background: linear-gradient(160deg, #1A1610 0%, #2E2518 100%); }
+    .theme-gold .t-title { color: #E8D5A3; }
+    .theme-gold .t-ornament { color: #C9A84C; }
+    .theme-gold .t-subtitle { color: rgba(232,213,163,.6); }
+    .theme-gold .t-date { color: rgba(232,213,163,.5); }
+
+    .theme-sage { background: linear-gradient(160deg, #EFF5F1 0%, #D4E6DA 100%); }
+    .theme-sage .t-title { color: #2D4A38; }
+    .theme-sage .t-ornament { color: #5A8A6A; }
+
+    .theme-slate { background: linear-gradient(160deg, #EEF1F7 0%, #D3DAEA 100%); }
+    .theme-slate .t-title { color: #1E2D4A; }
+    .theme-slate .t-ornament { color: #4A6FA3; }
+
+    .theme-terra { background: linear-gradient(160deg, #F7EDE8 0%, #E8CCBC 100%); }
+    .theme-terra .t-title { color: #5C2D18; }
+    .theme-terra .t-ornament { color: #C46A3A; }
+
+    .theme-ivory { background: linear-gradient(160deg, #FAF8F4 0%, #F0EBE0 100%); }
+    .theme-ivory .t-title { color: #3A3020; }
+    .theme-ivory .t-ornament { color: #8C7040; }
+
+    .t-ornament { font-size: 2.4rem; margin-bottom: .8rem; }
+    .t-subtitle {
+      font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--soft); margin-bottom: .6rem;
+    }
+    .t-title {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 1.6rem; font-weight: 400; line-height: 1.3;
+      margin-bottom: .4rem;
+    }
+    .t-divider {
+      width: 40px; height: 1px; margin: .8rem auto;
+    }
+    .t-date { font-size: .7rem; letter-spacing: .1em; color: var(--soft); }
+
+    .template-info { padding: 1.2rem 1.4rem 1.4rem; }
+    .template-name {
+      font-size: .95rem; font-weight: 500; color: var(--dark);
+      margin-bottom: .3rem;
+    }
+    .template-meta {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .template-themes {
+      display: flex; gap: .3rem;
+    }
+    .color-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.1);
+    }
+    .template-price {
+      font-size: .82rem; color: var(--gold); font-weight: 500;
+    }
+    .template-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--gold); color: white;
+      font-size: .62rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .22rem .6rem;
+    }
+    .template-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,22,16,.7);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .8rem;
+      opacity: 0; transition: opacity .3s;
+    }
+    .template-card:hover .template-overlay { opacity: 1; }
+    .overlay-btn {
+      background: var(--cream); color: var(--dark);
+      border: none; padding: .65rem 1.8rem; cursor: pointer;
+      font-family: 'DM Sans',sans-serif;
+      font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+      transition: background .2s; width: 180px; text-align: center;
+      text-decoration: none; display: block;
+    }
+    .overlay-btn:hover { background: var(--gold); color: white; }
+    .overlay-btn.outline {
+      background: transparent; border: 1px solid rgba(255,255,255,.5); color: white;
+    }
+    .overlay-btn.outline:hover { background: white; color: var(--dark); }
+
+    /* ── FEATURES ── */
+    .features-section { background: var(--dark); color: var(--cream); }
+    .features-section .section-title { color: var(--cream); }
+    .features-section .section-desc { color: rgba(255,255,255,.5); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .feature-item {
+      padding: 2rem 1.6rem;
+      border: 1px solid rgba(201,168,76,.15);
+      transition: border-color .2s;
+    }
+    .feature-item:hover { border-color: var(--gold); }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .feature-title {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 1.2rem; margin-bottom: .6rem; color: var(--gold-light);
+    }
+    .feature-desc { font-size: .85rem; line-height: 1.7; color: rgba(255,255,255,.5); }
+
+    /* ── HOW IT WORKS ── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem; position: relative;
+    }
+    .step-item { text-align: center; padding: 2rem 1rem; }
+    .step-num {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 4rem; font-weight: 300; color: var(--gold-light);
+      line-height: 1; margin-bottom: 1rem;
+    }
+    .step-title { font-size: 1rem; font-weight: 500; margin-bottom: .5rem; color: var(--dark); }
+    .step-desc { font-size: .85rem; color: var(--soft); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,.4);
+      padding: 3rem 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 1.4rem; color: var(--cream);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: .78rem; }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(26,22,16,.85);
+      z-index: 1000; display: none;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: var(--cream);
+      max-width: 640px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      padding: 3rem; position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.4rem;
+      cursor: pointer; color: var(--soft);
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 1.8rem; margin-bottom: .5rem;
+    }
+    .modal-sub { color: var(--soft); font-size: .85rem; margin-bottom: 2rem; }
+    .theme-selector { margin-bottom: 2rem; }
+    .theme-label {
+      font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--soft); margin-bottom: .8rem;
+    }
+    .theme-options { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .theme-opt {
+      padding: .5rem 1.2rem;
+      border: 1px solid rgba(0,0,0,.15);
+      cursor: pointer; font-size: .8rem; transition: all .2s;
+      background: white;
+    }
+    .theme-opt.selected { border-color: var(--gold); background: var(--gold); color: white; }
+    .modal-preview {
+      height: 240px; margin-bottom: 1.5rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 2rem; transition: background .4s;
+    }
+    .modal-actions { display: flex; gap: 1rem; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 6rem; }
+      .hero-visual { display: none; }
+      .nav-links { display: none; }
+      .stats-bar { gap: 2rem; }
+    }
+
+    /* animate on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-tag, .hero-title, .hero-desc, .hero-actions {
+      animation: fadeUp .7s ease both;
+    }
+    .hero-title { animation-delay: .1s; }
+    .hero-desc { animation-delay: .2s; }
+    .hero-actions { animation-delay: .3s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Undangan<span>ku</span></div>
+  <ul class="nav-links">
+    <li><a href="#templates">Template</a></li>
+    <li><a href="#fitur">Fitur</a></li>
+    <li><a href="#cara-kerja">Cara Kerja</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('templates').scrollIntoView({behavior:'smooth'})">Lihat Template</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">✦ Undangan Digital Premium</div>
+    <h1 class="hero-title">
+      Rayakan Momen<br><em>Spesialmu</em><br>dengan Elegan
+    </h1>
+    <p class="hero-desc">
+      Pilih dari koleksi template undangan digital premium kami — pernikahan, akad, khitan, ulang tahun, dan lainnya. Berbagai tema warna tersedia untuk setiap template.
+    </p>
+    <div class="hero-actions">
+      <a href="#templates" class="btn-primary">Jelajahi Template</a>
+      <a href="#cara-kerja" class="btn-outline">Cara Kerja</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card c1">
+      <div class="card-preview-bar"></div>
+      <div class="hero-card-inner">
+        <div class="card-ornament">✦</div>
+        <div class="card-couple" style="font-size:1.1rem;color:#2D4A38">Rizky & Amelia</div>
+        <div class="card-date">Sabtu, 14 Juni 2025</div>
+      </div>
+    </div>
+    <div class="hero-card c2">
+      <div style="height:6px;background:linear-gradient(90deg,#C9A84C,#E8D5A3)"></div>
+      <div class="hero-card-inner" style="background:linear-gradient(160deg,#1A1610,#2E2518)">
+        <div class="card-ornament" style="color:#C9A84C">♦</div>
+        <div class="card-couple" style="color:#E8D5A3">Ahmad & Siti</div>
+        <div class="card-date" style="color:rgba(232,213,163,.5)">Minggu, 22 Agustus 2025</div>
+      </div>
+    </div>
+    <div class="hero-card c3">
+      <div style="height:6px;background:linear-gradient(90deg,#D4826A,#F0B090)"></div>
+      <div class="hero-card-inner" style="background:linear-gradient(160deg,#FFF0F3,#FFD6DF)">
+        <div class="card-ornament" style="color:#C45C7A">✿</div>
+        <div class="card-couple" style="color:#8B2E4A;font-size:.95rem">Budi & Putri</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Template Tersedia</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Pilihan Tema Warna</div></div>
+  <div class="stat"><div class="stat-num">1000+</div><div class="stat-label">Undangan Terkirim</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Bisa Dikustomisasi</div></div>
+</div>
+
+<!-- TEMPLATES -->
+<section id="templates">
+  <div class="section-tag">✦ Koleksi Template</div>
+  <h2 class="section-title">Pilih <em>Template</em> Favoritmu</h2>
+  <p class="section-desc">Setiap template tersedia dalam beberapa variasi tema warna. Klik template untuk melihat preview dan memilih tema.</p>
+
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterTemplates('semua', this)">Semua</button>
+    <button class="filter-btn" onclick="filterTemplates('pernikahan', this)">Pernikahan</button>
+    <button class="filter-btn" onclick="filterTemplates('akad', this)">Akad Nikah</button>
+    <button class="filter-btn" onclick="filterTemplates('ultah', this)">Ulang Tahun</button>
+    <button class="filter-btn" onclick="filterTemplates('khitan', this)">Khitan</button>
+    <button class="filter-btn" onclick="filterTemplates('acara', this)">Acara Umum</button>
+  </div>
+
+  <div class="templates-grid" id="templatesGrid">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="fitur" class="features-section">
+  <div class="section-tag">✦ Keunggulan Kami</div>
+  <h2 class="section-title">Semua yang Kamu<br><em>Butuhkan</em></h2>
+  <p class="section-desc">Fitur lengkap untuk undangan digital yang berkesan dan fungsional.</p>
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">Multi Tema Warna</div>
+      <div class="feature-desc">Setiap template hadir dalam 6 pilihan tema warna — dari elegan klasik hingga modern minimalis.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Responsif di Semua Perangkat</div>
+      <div class="feature-desc">Tampilannya sempurna di HP, tablet, maupun komputer. Mudah dibagikan via WhatsApp, Instagram, atau email.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">✏️</div>
+      <div class="feature-title">Mudah Dikustomisasi</div>
+      <div class="feature-desc">Ubah nama, tanggal, lokasi, foto, dan semua detail penting dengan mudah tanpa keahlian teknis.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💌</div>
+      <div class="feature-title">RSVP Digital</div>
+      <div class="feature-desc">Fitur konfirmasi kehadiran tamu yang tersimpan otomatis. Tidak perlu lagi menghitung manual.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🗺️</div>
+      <div class="feature-title">Peta Lokasi Terintegrasi</div>
+      <div class="feature-desc">Google Maps terintegrasi langsung di undangan, tamu bisa langsung navigasi ke lokasi acara.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Siap dalam 24 Jam</div>
+      <div class="feature-desc">Setelah data dikirim, undangan digitalmu siap dibagikan dalam waktu 24 jam.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="cara-kerja">
+  <div style="text-align:center;max-width:600px;margin:0 auto 3rem">
+    <div class="section-tag" style="justify-content:center;display:flex">✦ Cara Kerja</div>
+    <h2 class="section-title" style="text-align:center">Mudah & <em>Cepat</em></h2>
+    <p class="section-desc" style="margin:0 auto;text-align:center">Dari pilih template hingga undangan siap kirim hanya dalam beberapa langkah.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-item">
+      <div class="step-num">01</div>
+      <div class="step-title">Pilih Template</div>
+      <div class="step-desc">Jelajahi koleksi kami dan pilih template yang paling sesuai dengan acara dan seleramu.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">02</div>
+      <div class="step-title">Pilih Tema Warna</div>
+      <div class="step-desc">Sesuaikan tema warna template dengan konsep acaramu dari beberapa pilihan yang tersedia.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">03</div>
+      <div class="step-title">Kirim Data & Foto</div>
+      <div class="step-desc">Isi nama, tanggal, lokasi, dan kirimkan foto untuk melengkapi undanganmu.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">04</div>
+      <div class="step-title">Undangan Siap!</div>
+      <div class="step-desc">Terima link undangan digitalmu dan langsung bagikan ke seluruh tamu undangan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Undangan<span>ku</span></div>
+  <div class="footer-copy">© 2025 Undanganku. Dibuat dengan ♥ untuk momen spesialmu.</div>
+  <div class="footer-copy">Tambah template baru di <code>templates-config.js</code></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div id="modalTitle" class="modal-title"></div>
+    <div id="modalSub" class="modal-sub"></div>
+    <div class="theme-selector">
+      <div class="theme-label">Pilih Tema Warna</div>
+      <div class="theme-options" id="themeOptions"></div>
+    </div>
+    <div class="modal-preview" id="modalPreview"></div>
+    <div class="modal-actions">
+      <a id="modalPreviewLink" href="#" target="_blank" class="btn-primary" style="flex:1;text-align:center">Lihat Preview Full</a>
+      <button class="btn-outline" onclick="closeModalBtn()" style="flex:1">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<script src="templates-config.js"></script>
+<script>
+// ── Render Templates ──
+let allTemplates = [];
+let activeFilter = 'semua';
+
+function renderTemplates(filter) {
+  const grid = document.getElementById('templatesGrid');
+  grid.innerHTML = '';
+  const filtered = filter === 'semua' ? allTemplates : allTemplates.filter(t => t.kategori === filter);
+
+  filtered.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'template-card';
+    card.innerHTML = `
+      ${t.badge ? `<div class="template-badge">${t.badge}</div>` : ''}
+      <div class="template-thumb">
+        <div class="template-thumb-inner theme-${t.defaultTheme}">
+          <div class="t-ornament">${t.ornament}</div>
+          <div class="t-subtitle">${t.subtitle}</div>
+          <div class="t-title">${t.previewTitle}</div>
+          <div class="t-divider" style="background:currentColor;opacity:.3"></div>
+          <div class="t-date">${t.previewDate}</div>
+        </div>
+        <div class="template-overlay">
+          <button class="overlay-btn" onclick="openModal('${t.id}')">Pilih Tema & Preview</button>
+          <a href="${t.demoFile}" target="_blank" class="overlay-btn outline">Lihat Demo</a>
+        </div>
+      </div>
+      <div class="template-info">
+        <div class="template-name">${t.name}</div>
+        <div class="template-meta">
+          <div class="template-themes">
+            ${t.themes.map(th => `<div class="color-dot" style="background:${th.color}" title="${th.label}"></div>`).join('')}
+          </div>
+          <div class="template-price">${t.price}</div>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterTemplates(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTemplates(cat);
+}
+
+// ── Modal ──
+let currentTemplate = null;
+let selectedTheme = null;
+
+function openModal(id) {
+  currentTemplate = allTemplates.find(t => t.id === id);
+  if (!currentTemplate) return;
+  selectedTheme = currentTemplate.themes[0];
+
+  document.getElementById('modalTitle').textContent = currentTemplate.name;
+  document.getElementById('modalSub').textContent = currentTemplate.kategoriLabel + ' • ' + currentTemplate.themes.length + ' pilihan tema';
+
+  renderThemeOptions();
+  renderPreview();
+
+  document.getElementById('modalBackdrop').classList.add('open');
+}
+
+function renderThemeOptions() {
+  const wrap = document.getElementById('themeOptions');
+  wrap.innerHTML = '';
+  currentTemplate.themes.forEach(th => {
+    const btn = document.createElement('button');
+    btn.className = 'theme-opt' + (th === selectedTheme ? ' selected' : '');
+    btn.textContent = th.label;
+    btn.onclick = () => {
+      selectedTheme = th;
+      document.querySelectorAll('.theme-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      renderPreview();
+    };
+    wrap.appendChild(btn);
+  });
+}
+
+function renderPreview() {
+  const preview = document.getElementById('modalPreview');
+  preview.className = 'modal-preview theme-' + selectedTheme.key;
+  preview.innerHTML = `
+    <div class="t-ornament">${currentTemplate.ornament}</div>
+    <div class="t-subtitle">${currentTemplate.subtitle}</div>
+    <div class="t-title" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem">${currentTemplate.previewTitle}</div>
+    <div style="width:40px;height:1px;background:currentColor;opacity:.3;margin:.8rem auto"></div>
+    <div class="t-date">${currentTemplate.previewDate}</div>
+  `;
+  const link = document.getElementById('modalPreviewLink');
+  link.href = currentTemplate.demoFile + '?tema=' + selectedTheme.key;
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalBackdrop')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalBackdrop').classList.remove('open');
+}
+
+// ── Init ──
+allTemplates = window.TEMPLATES_CONFIG || [];
+renderTemplates('semua');
+</script>
+</body>
+</html>
