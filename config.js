@@ -172,7 +172,7 @@ window.TEMPLATES_CONFIG = [
   {
     id: 'event-profesional',
     name: 'Event Profesional',
-     kategori: 'pernikahan',
+    kategori: 'pernikahan',
     kategoriLabel: 'Pernikahan',
     subtitle: 'Undangan Pernikahan',
     ornament: '❀',
@@ -190,26 +190,27 @@ window.TEMPLATES_CONFIG = [
   },
 
 
-  // ── TEMPLATE 9: Full Photography ──
+  // ── TEMPLATE 9: Background Video ──
   {
-    id: 'full-photography',
-    name: 'Full Photography',
-    kategori: 'acara',
-    kategoriLabel: 'Acara Umum',
-    subtitle: 'Undangan Acara',
-    ornament: '◈',
-   previewTitle: 'Dimas & Nadia',
-    previewDate: 'Jumat, 10 Oktober 2025',
-    defaultTheme: 'sage',
-    badge: null,
-    demoFile: 'undangan/full-photography.html',
-    price: 'Rp 125.000',
+    id: 'background-video',         // ID unik (huruf kecil, pakai strip)
+    name: 'Background Video',       // Nama tampil di dashboard
+    kategori: 'pernikahan',        // Kategori: pernikahan/akad/ultah/khitan/acara
+    kategoriLabel: 'Pernikahan',   // Label kategori yang ditampilkan
+    subtitle: 'Undangan Pernikahan', // Subtitle di preview card
+    ornament: '❁',                 // Simbol ornamen (emoji atau unicode)
+    previewTitle: 'Budi & Putri',  // Nama pasangan untuk preview
+    previewDate: 'Sabtu, 5 April 2025', // Tanggal untuk preview
+    defaultTheme: 'terra',         // Tema default saat pertama tampil
+    badge: 'Baru',                 // Badge (null jika tidak ada)
+    demoFile: 'undangan/background-video.html', // Path ke file HTML
+    price: 'Rp 150.000',           // Harga
     themes: [
-      { key: 'gold',    label: 'Black Gold',     color: '#C9A84C' },
-      { key: 'slate',   label: 'Corporate Blue', color: '#4A6FA3' },
-      { key: 'sage',    label: 'Nature Green',   color: '#5A8A6A' },
+      { key: 'terra',  label: 'Rustic Terra',  color: '#C46A3A' },
+      { key: 'sage',   label: 'Bohemian Sage', color: '#5A8A6A' },
+      { key: 'ivory',  label: 'Cream Classic', color: '#8C7040' },
     ]
   },
+  
 
 
   // ══════════════════════════════════════════════
