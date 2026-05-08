@@ -168,29 +168,8 @@ window.TEMPLATES_CONFIG = [
     ]
   },
 
-  // ── TEMPLATE 8: Event Profesional ──
-  {
-    id: 'event-profesional',
-    name: 'Event Profesional',
-    kategori: 'pernikahan',
-    kategoriLabel: 'Pernikahan',
-    subtitle: 'Undangan Pernikahan',
-    ornament: '❀',
-    previewTitle: 'Annual Gala Night\n2025',
-    previewDate: 'Jumat, 12 Desember 2025',
-    defaultTheme: 'gold',
-    badge: null,
-    demoFile: 'undangan/event-profesional.html',
-    price: 'Rp 125.000',
-    themes: [
-      { key: 'gold',    label: 'Black Gold',     color: '#C9A84C' },
-      { key: 'slate',   label: 'Corporate Blue', color: '#4A6FA3' },
-      { key: 'sage',    label: 'Nature Green',   color: '#5A8A6A' },
-    ]
-  },
 
-
-  // ── TEMPLATE 9: Background Video ──
+  // ── TEMPLATE 8: Background Video ──
   {
     id: 'background-video',         // ID unik (huruf kecil, pakai strip)
     name: 'Background Video',       // Nama tampil di dashboard
@@ -208,6 +187,9 @@ window.TEMPLATES_CONFIG = [
       { key: 'terra',  label: 'Rustic Terra',  color: '#C46A3A' },
       { key: 'sage',   label: 'Bohemian Sage', color: '#5A8A6A' },
       { key: 'ivory',  label: 'Cream Classic', color: '#8C7040' },
+      { key: 'sakura', label: 'Blush Pink',   color: '#C45C7A' },
+      { key: 'terra',  label: 'Orange Warm',  color: '#C46A3A' },
+      { key: 'gold',   label: 'Gold Luxury',   color: '#C9A84C' }
     ]
   },
   
