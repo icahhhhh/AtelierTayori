@@ -187,9 +187,9 @@ window.TEMPLATES_CONFIG = [
       { key: 'terra',  label: 'Rustic Terra',  color: '#C46A3A' },
       { key: 'sage',   label: 'Bohemian Sage', color: '#5A8A6A' },
       { key: 'ivory',  label: 'Cream Classic', color: '#8C7040' },
-      { key: 'sakura', label: 'Blush Pink',   color: '#C45C7A' },
-      { key: 'terra',  label: 'Orange Warm',  color: '#C46A3A' },
-      { key: 'gold',   label: 'Gold Luxury',   color: '#C9A84C' }
+      { key: 'sakura', label: 'Blush Pink',    color: '#C45C7A' },
+      { key: 'terra',  label: 'Orange Warm',   color: '#C46A3A' },
+      { key: 'gold',   label: 'Gold Luxury',   color: '#C9A84C' },
     ]
   },
   
