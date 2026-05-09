@@ -74,9 +74,9 @@ window.TEMPLATES_CONFIG = [
     demoFile: 'undangan/rustic-floral.html',
     price: 'Rp 150.000',
     themes: [
-      { key: 'terracotta',   label: 'Rustic Terra',   color: '#7A3E31' },
-      { key: 'sage',    label: 'Garden Sage',    color: '#4A5D4E' },
-      { key: 'mocha',   label: 'Choco Mocha',    color: '##5C4A3D' },
+      { key: 'terracotta',   label: 'Terracotta',   color: '#7A3E31' },
+      { key: 'sage',    label: 'Sage Green',    color: '#4A5D4E' },
+      { key: 'mocha',   label: 'Mocha Wood',    color: '##5C4A3D' },
     ]
     },
 
