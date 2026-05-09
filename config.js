@@ -69,17 +69,16 @@ window.TEMPLATES_CONFIG = [
     ornament: '❀',
     previewTitle: 'Dimas & Nadia',
     previewDate: 'Jumat, 10 Oktober 2025',
-    defaultTheme: 'terra',
+    defaultTheme: 'sage',
     badge: null,
     demoFile: 'undangan/rustic-floral.html',
     price: 'Rp 150.000',
     themes: [
-      { key: 'terra',   label: 'Rustic Terra',   color: '#C46A3A' },
-      { key: 'sage',    label: 'Garden Sage',    color: '#5A8A6A' },
-      { key: 'ivory',   label: 'Linen Ivory',    color: '#8C7040' },
-      { key: 'sakura',  label: 'Dusty Rose',     color: '#C45C7A' },
+      { key: 'terracotta',   label: 'Rustic Terra',   color: '#7A3E31' },
+      { key: 'sage',    label: 'Garden Sage',    color: '#4A5D4E' },
+      { key: 'mocha',   label: 'Choco Mocha',    color: '##5C4A3D' },
     ]
-  },
+    },
 
   // ── TEMPLATE 4: Akad Islami ──
   {
